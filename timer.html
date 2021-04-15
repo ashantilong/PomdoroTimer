@@ -8,23 +8,24 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
     </head>
     <body class = "bodyBackground">
         <div class = "container"> 
             <div class = "PomodoroTask " id = "PomodoroClock ">
 
-                <button class = "taskButton"> Pomodoro </button>
-                <button class = "taskButton"> Short Break</button>
-                <button class = "taskButton">Long Break</button>
+                <button class = "taskButton" onclick="Pomodoro(25)"> Pomodoro </button>
+                <button class = "taskButton" onclick="Pomodoro(5)"> Short Break</button>
+                <button class = "taskButton" onclick="Pomodoro(15)">Long Break</button>
 
 
                 <div class = "PomodoroTimer">
                     
-                    25:00 
+                   <span id = "timer"> 25:00</span> 
 
                 </div>
                 <div id = "Pomodoro-Clock-Action">
-                    <button class = "Pomodoro-Start"> Start </button>
+                    <button class = "Pomodoro-Start" onclick="Start()" id = "start">Start</button>
 
 
 
@@ -43,6 +44,6 @@
         
 
 
-        <script src="" async defer></script>
+        
     </body>
 </html>
