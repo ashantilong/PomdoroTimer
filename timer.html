@@ -4,46 +4,105 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Pomodoro Timer </title>
+        <title>
+            Pomodoro Timer
+        </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
+        <link rel ="stylesheet" href="scripts/font-awesome-4.7.0/css/font-awesome.min.css"></link>
     </head>
-    <body class = "bodyBackground">
-        <div class = "container"> 
-            <div class = "PomodoroTask " id = "PomodoroClock ">
+    <body class="bodyBackground">
+        <div class="container">
+            <div class="PomodoroClock " id="PomodoroClock ">
 
-                <button class = "taskButton" onclick="Pomodoro(25)"> Pomodoro </button>
-                <button class = "taskButton" onclick="Pomodoro(5)"> Short Break</button>
-                <button class = "taskButton" onclick="Pomodoro(15)">Long Break</button>
+                <button class="taskButton" onclick="Pomodoro(25)">
+                    Pomodoro
+                </button>
+                <button class="taskButton" onclick="Pomodoro(5)">
+                    Short Break</button>
+                <button class="taskButton" onclick="Pomodoro(15)">Long Break</button>
 
 
-                <div class = "PomodoroTimer">
-                    
-                   <span id = "timer"> 25:00</span> 
+                <div class="PomodoroTimer">
+
+                    <span id="timer">
+                        25:00</span>
 
                 </div>
-                <div id = "Pomodoro-Clock-Action">
-                    <button class = "Pomodoro-Start" onclick="Start()" id = "start">Start</button>
-
-
+                <div id="Pomodoro-Clock-Action">
+                    <button class="Pomodoro-Start" onclick="Start()" id="start">Start</button>
 
 
                 </div>
 
 
             </div>
+            <br/>
+
+            <div class=" PomodoroClock">
+
+                <h3> Time to work !</h3>
+                <div class="taskHeader" > 
+                    <span class="left">Tasks</span>
+                    <i class=" right fa fa-ellipsis-v" aria-hidden="true"></i>
+
+                </div>
+                <br/>
+                <hr/>
+                <div class="Task">
+                    <div class="currentTask" id="currentTask">
 
 
 
 
+                    </div>
+                    <button class="addTask" onclick="addTask()" id="addTask">
+
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>  
+                        <span>Add Task</span>
+                    </button>
+                    <div class="newtask">
+                        <div class="card" style="display: none;" id="card">
+
+                            <input placeholder="What are you working on ?" class="placeholder" id="placeholder"></input>
+                            <br/>
+                            <label class="estLabel">Est Pomodoros</label>
+                            <br/>
+                            <input value="1" type="number" min="0" max="25" step="1" class="inputEst" id="inputEst"></input>
+                            <button class="arrow" onclick="inc()"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+                            <button class="arrow" onclick="dec()"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                            <div class="cardFooter">
+                                <button class="save" onclick="save()">Save</button>
+                                <button class="cancel" onclick="cancelTask()">Cancel</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <br/>
+                    <hr/>
+                    <div class="taskStats">
+
+                        <label>Est:</label>
+                        <span id="est">0</span>
+
+                        <label>Task(s):</label>
+                        <span id="taskNumber">0</span>
+
+                        <label>Finish At</label>
+                        <span id="taskFinish">25:00</span>
+                    </div>
+
+
+                </div>
+            </div>
 
 
         </div>
-        
 
 
-        
     </body>
 </html>
