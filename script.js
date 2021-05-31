@@ -91,26 +91,66 @@ function dec() {
 }
 
 var task = [];
-function save(){
-var item = document.getElementById("placeholder").value;
-task.push(item);
+function save() {
+    var item = document.getElementById("placeholder").value;
+    task.push(item);
 
-if (task.length > 0){
-    document.getElementById('currentTask').innerHTML = "";
+    // var saveTask = task;
+    localStorage.setItem('task', task);
 
-    for (var i =0 ; i < task.length; i++){
-        var node = document.createElement("div");
-        node.className = "taskStyle";
-        node.innerHTML = "<i class='fa fa-check iconStyle' aria-hidden='true'></i><span id = "+i+">"+task[i]+"</span>";
-        //document.getElementById('currentTask').innerHTML = ""
-        document.getElementById('currentTask').appendChild(node);
-      
+    if (task.length > 0) {
+        document.getElementById('currentTask').innerHTML = "";
 
-      
+        for (var i = 0; i < task.length; i++) {
+            var node = document.createElement("div");
+            node.className = "taskStyle";
+            node.id = 'taskStyle' + i;
+            node.innerHTML = "<button onClick= 'deleteTask("+i+")'> <i class='fa fa-check iconStyle' aria-hidden='true'></i></button><span id = " + i + ">" + task[i] + "</span>";
+            // document.getElementById('currentTask').innerHTML = ""
+            document.getElementById('currentTask').appendChild(node);
+
+
+        }
+        document.getElementById("addTask").style.display = "block";
+        document.getElementById("card").style.display = "none";
+        document.getElementById("inputEst").value = 0;
+        document.getElementById("placeholder").value = "";
     }
-    document.getElementById("addTask").style.display = "block";
-    document.getElementById("card").style.display = "none";
-    document.getElementById("inputEst").value = 0;
-    document.getElementById("placeholder").value = "";
 }
+
+function pageLoad() {
+   // debugger;
+    var storeTask = localStorage.getItem('task').split(",");
+    task.push(storeTask);
+
+    if (storeTask.length > 0){
+        for (var i = 0; i < storeTask.length; i++){
+            var node = document.createElement("div");
+            node.className = "taskStyle";
+            node.id = 'taskStyle' + i;
+            node.innerHTML = "<button onClick= 'deleteTask("+i+")'> <i class='fa fa-check iconStyle' aria-hidden='true'></i></button><span id = " + i + ">" + storeTask[i] + "</span>";
+            document.getElementById('currentTask').appendChild(node);
+            document.getElementById("addTask").style.display = "block";
+            document.getElementById("card").style.display = "none";
+            document.getElementById("inputEst").value = 0;
+            document.getElementById("placeholder").value = "";
+        }
+
+
+    }
+    
+}
+
+function deleteTask(index){
+debugger
+if (task.length > 1){
+    task = task.split(',');
+}
+delete task[index];
+localStorage.setItem('task', task);
+
+var taskObject = document.getElementById('taskStyle' + index);
+taskObject.remove();
+
+
 }
